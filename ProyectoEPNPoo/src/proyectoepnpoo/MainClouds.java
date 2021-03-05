@@ -7,7 +7,7 @@ package proyectoepnpoo;
 
 /**
  *
- * @author Freddy Pallo -->Fredy.pallo@epn.edu.ec
+ * @author Freddy Pallo - Jefferson Tipán -->Fredy.pallo@epn.edu.ec - jefferson.tipan@epn.edu.ec
  */
 public class MainClouds {
 
