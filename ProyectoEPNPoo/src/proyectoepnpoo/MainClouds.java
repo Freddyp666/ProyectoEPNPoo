@@ -16,10 +16,10 @@ public class MainClouds {
      */
     public static void main(String[] args) {
         // TODO code application logic here
-        System.out.println("ERORORORORO");
+        /*System.out.println("ERORORORORO");
         System.out.println("bien");
         System.out.println("Si funciono");
-        System.out.println("xD");
+        System.out.println("xD");*/
     }
     
 }
