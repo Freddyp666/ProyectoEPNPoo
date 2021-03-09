@@ -5,6 +5,9 @@
  */
 package proyectoepnpoo;
 
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
+
 /**
  *
  * @author Freddy Pallo -->Fredy.pallo@epn.edu.ec
@@ -17,6 +20,30 @@ public class GUIClothes extends javax.swing.JFrame {
     public GUIClothes() {
         initComponents();
         setLocationRelativeTo(null);
+        limpiarTodosLosCampos();
+    }
+
+    public void limpiarTodosLosCampos() {
+
+        txtNombre.requestFocus();
+    }
+
+    public static boolean validarFormatoCorreo(String correo) {
+        Pattern pat = null;
+        Matcher mat = null;
+
+        String v
+                =//"^[_a-z0-9-]+(\\\\.[_a-z0-9-]+)*@[a-z0-9-]+(\\\\.[a-z0-9-]+)*(\\\\.[a-z]{2,4})$";
+                "^[_A-Za-z0-9-\\+]+(\\.[_A-Za-z0-9-]+)*@[A-Za-z0-9-]+(\\.[A-Za-z0-9]+)*(\\.[A-Za-z]{2,})$";
+        //"^([0-9a-zA-Z]([_.w]*[0-9a-zA-Z])*@([0-9a-zA-Z][-w]*[0-9a-zA-Z].)+([a-zA-Z]{2,9}.)+[a-zA-Z]{2,3})$"
+        pat = Pattern.compile(v);
+        mat = pat.matcher(correo);
+        if (mat.find()) {
+            //System.out.println("[" + mat.group() + "]");
+            return true;
+        } else {
+            return false;
+        }
     }
 
     /**
@@ -39,6 +66,8 @@ public class GUIClothes extends javax.swing.JFrame {
         txtApellido = new javax.swing.JTextField();
         jLabel3 = new javax.swing.JLabel();
         txtCorreo = new javax.swing.JTextField();
+        lblAstRojo = new javax.swing.JLabel();
+        lblAstNombre = new javax.swing.JLabel();
         btnCancelar = new javax.swing.JButton();
         jButton1 = new javax.swing.JButton();
 
@@ -49,6 +78,11 @@ public class GUIClothes extends javax.swing.JFrame {
 
         jLabel4.setText("CÉDULA");
 
+        txtCl.addCaretListener(new javax.swing.event.CaretListener() {
+            public void caretUpdate(javax.swing.event.CaretEvent evt) {
+                txtClCaretUpdate(evt);
+            }
+        });
         txtCl.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 txtClActionPerformed(evt);
@@ -59,15 +93,34 @@ public class GUIClothes extends javax.swing.JFrame {
 
         jLabel6.setText("NUMERO DE TARJETA");
 
+        txtNombre.addCaretListener(new javax.swing.event.CaretListener() {
+            public void caretUpdate(javax.swing.event.CaretEvent evt) {
+                txtNombreCaretUpdate(evt);
+            }
+        });
+
         jLabel2.setText("APELLIDO");
 
         jLabel3.setText("CORREO");
 
+        txtCorreo.addCaretListener(new javax.swing.event.CaretListener() {
+            public void caretUpdate(javax.swing.event.CaretEvent evt) {
+                txtCorreoCaretUpdate(evt);
+            }
+        });
         txtCorreo.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 txtCorreoActionPerformed(evt);
             }
         });
+
+        lblAstRojo.setFont(new java.awt.Font("Dialog", 1, 18)); // NOI18N
+        lblAstRojo.setForeground(new java.awt.Color(204, 0, 0));
+        lblAstRojo.setText("*");
+
+        lblAstNombre.setFont(new java.awt.Font("Dialog", 1, 18)); // NOI18N
+        lblAstNombre.setForeground(new java.awt.Color(204, 0, 0));
+        lblAstNombre.setText("*");
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -82,15 +135,17 @@ public class GUIClothes extends javax.swing.JFrame {
                     .addComponent(jLabel4)
                     .addComponent(jLabel6))
                 .addGap(19, 19, 19)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(txtCorreo)
-                    .addComponent(txtCl)
-                    .addComponent(txtApellido)
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addComponent(txtNombre, javax.swing.GroupLayout.PREFERRED_SIZE, 163, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(0, 0, Short.MAX_VALUE))
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                    .addComponent(txtCl, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 163, Short.MAX_VALUE)
+                    .addComponent(txtCorreo, javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(txtApellido, javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(txtNombre, javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(txtTarjeta))
-                .addContainerGap())
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(lblAstRojo, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(lblAstNombre, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap(23, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -98,7 +153,8 @@ public class GUIClothes extends javax.swing.JFrame {
                 .addGap(10, 10, 10)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel1)
-                    .addComponent(txtNombre, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(txtNombre, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(lblAstNombre, javax.swing.GroupLayout.PREFERRED_SIZE, 7, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel2)
@@ -106,7 +162,9 @@ public class GUIClothes extends javax.swing.JFrame {
                 .addGap(18, 18, 18)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addComponent(jLabel3)
-                    .addComponent(txtCorreo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(txtCorreo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(lblAstRojo, javax.swing.GroupLayout.PREFERRED_SIZE, 13, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addGap(25, 25, 25)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel4)
@@ -129,29 +187,29 @@ public class GUIClothes extends javax.swing.JFrame {
             .addGroup(layout.createSequentialGroup()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(55, 55, 55)
-                        .addComponent(jLabel5))
+                        .addGap(139, 139, 139)
+                        .addComponent(btnCancelar)
+                        .addGap(30, 30, 30)
+                        .addComponent(jButton1))
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(28, 28, 28)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                                .addComponent(btnCancelar)
-                                .addGap(27, 27, 27)
-                                .addComponent(jButton1)
-                                .addGap(67, 67, 67)))))
-                .addContainerGap(24, Short.MAX_VALUE))
+                        .addGap(55, 55, 55)
+                        .addComponent(jLabel5)))
+                .addContainerGap(134, Short.MAX_VALUE))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addGap(0, 0, Short.MAX_VALUE)
+                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(34, 34, 34))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(20, 20, 20)
+                .addGap(69, 69, 69)
                 .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btnCancelar)
                     .addComponent(jButton1))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 12, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(jLabel5))
         );
 
@@ -164,8 +222,38 @@ public class GUIClothes extends javax.swing.JFrame {
 
     private void txtCorreoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtCorreoActionPerformed
         // TODO add your handling code here:
-        
+
     }//GEN-LAST:event_txtCorreoActionPerformed
+
+    private void txtClCaretUpdate(javax.swing.event.CaretEvent evt) {//GEN-FIRST:event_txtClCaretUpdate
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtClCaretUpdate
+
+    private void txtCorreoCaretUpdate(javax.swing.event.CaretEvent evt) {//GEN-FIRST:event_txtCorreoCaretUpdate
+        // TODO add your handling code here:
+        boolean correcto = false;
+        String correo = txtCorreo.getText();
+        correcto = validarFormatoCorreo(correo);
+        if (correcto == true) {
+            lblAstRojo.setVisible(false);
+
+        } else if (correcto = false) {
+            lblAstRojo.setVisible(true);
+
+        }
+    }//GEN-LAST:event_txtCorreoCaretUpdate
+
+    private void txtNombreCaretUpdate(javax.swing.event.CaretEvent evt) {//GEN-FIRST:event_txtNombreCaretUpdate
+// TODO add your handling code here:
+        String validarNombre = " ";
+        if (validarNombre == " ") {
+            lblAstNombre.setVisible(false);
+            System.out.println("es correto");
+        } else if (validarNombre == "") {
+            lblAstNombre.setVisible(true);
+            System.out.println("No es correcto");
+        }
+    }//GEN-LAST:event_txtNombreCaretUpdate
 
     /**
      * @param args the command line arguments
@@ -212,6 +300,8 @@ public class GUIClothes extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
     private javax.swing.JPanel jPanel1;
+    private javax.swing.JLabel lblAstNombre;
+    private javax.swing.JLabel lblAstRojo;
     private javax.swing.JTextField txtApellido;
     private javax.swing.JTextField txtCl;
     private javax.swing.JTextField txtCorreo;
