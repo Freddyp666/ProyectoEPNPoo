@@ -21,6 +21,7 @@ public class GUIClothes extends javax.swing.JFrame {
         initComponents();
         setLocationRelativeTo(null);
         limpiarTodosLosCampos();
+        this.setLocationRelativeTo(null);
     }
 
     public void limpiarTodosLosCampos() {
@@ -97,6 +98,11 @@ public class GUIClothes extends javax.swing.JFrame {
         txtNombre.addCaretListener(new javax.swing.event.CaretListener() {
             public void caretUpdate(javax.swing.event.CaretEvent evt) {
                 txtNombreCaretUpdate(evt);
+            }
+        });
+        txtNombre.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtNombreActionPerformed(evt);
             }
         });
 
@@ -258,7 +264,7 @@ public class GUIClothes extends javax.swing.JFrame {
     }//GEN-LAST:event_txtCorreoCaretUpdate
 
     private void txtNombreCaretUpdate(javax.swing.event.CaretEvent evt) {//GEN-FIRST:event_txtNombreCaretUpdate
-// TODO add your handling code here:
+
         String validarNombre = " ";
         if (validarNombre == " ") {
             lblAstNombre.setVisible(false);
@@ -270,8 +276,14 @@ public class GUIClothes extends javax.swing.JFrame {
     }//GEN-LAST:event_txtNombreCaretUpdate
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        // TODO add your handling code here:
+        GUITipoRopa segundo = new GUITipoRopa();
+        segundo.setVisible(true);
+        this.setVisible(false);
     }//GEN-LAST:event_jButton1ActionPerformed
+
+    private void txtNombreActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtNombreActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtNombreActionPerformed
 
     /**
      * @param args the command line arguments
