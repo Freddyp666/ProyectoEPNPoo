@@ -9,6 +9,6 @@ package proyectoepnpoo;
  *
  * @author PC
  */
-public class Jeans {
+public class Jeans extends Ropa {
     
 }

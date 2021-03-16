@@ -70,7 +70,7 @@ public class Cliente {
     @Override
     public String toString(){
         return "\n\nSeñor/a: "+ this.Nombre.toUpperCase() +" " +this.Apellido.toUpperCase()
-                +"\nCorreo Electronico: " +this.Correo.toLowerCase()
+                +"\nCorreo Electrónico: " +this.Correo.toLowerCase()
                 +"\nCédula: " +this.Cedula +"\nCon tarjeta de número: " +this.Tarjeta;
         
     }

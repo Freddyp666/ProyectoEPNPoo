@@ -58,7 +58,6 @@ public class GUITipoRopa extends javax.swing.JFrame {
         btnGuardar = new javax.swing.JButton();
         btnContinuar = new javax.swing.JButton();
         btnSalir = new javax.swing.JButton();
-        btnRegresar = new javax.swing.JButton();
         jLabel2 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
 
@@ -168,14 +167,6 @@ public class GUITipoRopa extends javax.swing.JFrame {
             }
         });
 
-        btnRegresar.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
-        btnRegresar.setText("Regresar");
-        btnRegresar.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnRegresarActionPerformed(evt);
-            }
-        });
-
         jLabel2.setText("Para guardar seleccione en el boton Guardar");
 
         jLabel3.setText("Para realizar la compra seleccione en el boton Continuar");
@@ -195,11 +186,9 @@ public class GUITipoRopa extends javax.swing.JFrame {
                     .addComponent(jLabel2)
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(btnGuardar)
-                        .addGap(68, 68, 68)
+                        .addGap(142, 142, 142)
                         .addComponent(btnContinuar)
-                        .addGap(58, 58, 58)
-                        .addComponent(btnRegresar)
-                        .addGap(45, 45, 45)
+                        .addGap(116, 116, 116)
                         .addComponent(btnSalir, javax.swing.GroupLayout.PREFERRED_SIZE, 75, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -224,25 +213,19 @@ public class GUITipoRopa extends javax.swing.JFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btnGuardar)
                     .addComponent(btnContinuar)
-                    .addComponent(btnSalir)
-                    .addComponent(btnRegresar))
+                    .addComponent(btnSalir))
                 .addGap(50, 50, 50))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void btnRegresarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRegresarActionPerformed
-        GUIClothes principal = new GUIClothes();
-        principal.setVisible(true);
-        this.setVisible(false);
-        
-        
-    }//GEN-LAST:event_btnRegresarActionPerformed
-
     private void btnContinuarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnContinuarActionPerformed
         // TODO add your handling code here:
         limpiar();
+        GUIClothes segundo = new GUIClothes();
+        segundo.setVisible(true);
+        this.setVisible(false);
     }//GEN-LAST:event_btnContinuarActionPerformed
 
     private void cmbTipoRopaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cmbTipoRopaActionPerformed
@@ -325,7 +308,6 @@ public class GUITipoRopa extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnContinuar;
     private javax.swing.JButton btnGuardar;
-    private javax.swing.JButton btnRegresar;
     private javax.swing.JButton btnSalir;
     private javax.swing.JCheckBox cbxAdidas;
     private javax.swing.JCheckBox cbxLevis;

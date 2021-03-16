@@ -9,6 +9,7 @@ package proyectoepnpoo;
  *
  * @author PC
  */
-public class Ropa {
+public abstract class Ropa {
+    private String marca;
     
 }
