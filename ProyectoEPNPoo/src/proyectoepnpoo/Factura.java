@@ -10,5 +10,5 @@ package proyectoepnpoo;
  * @author PC
  */
 public class Factura {
-    
+    //Aqui va el 
 }
