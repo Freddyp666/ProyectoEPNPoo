@@ -375,6 +375,11 @@ public class GUIClothes extends javax.swing.JFrame {
         });
 
         btnPagar.setText("Valor a Pagar");
+        btnPagar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnPagarActionPerformed(evt);
+            }
+        });
 
         jLabel12.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         jLabel12.setText("Valor A pagar $");
@@ -486,6 +491,19 @@ public class GUIClothes extends javax.swing.JFrame {
         }
         this.txtValorPagar.setText(null);
     }//GEN-LAST:event_btnLimpiarTablaActionPerformed
+
+    private void btnPagarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnPagarActionPerformed
+        // TODO add your handling code here:
+        double sumatoria;
+        double sumatoria1=0;
+        int totalrow = tblInformacion.getRowCount();
+        totalrow = 1;
+        for(int i = 0; i <= (totalrow); i++){
+            sumatoria = Double.parseDouble(String.valueOf(tblInformacion.getValueAt(i, 6)));
+            sumatoria += sumatoria;
+        }
+        txtValorPagar.setText("$. " +String.valueOf(sumatoria1));
+    }//GEN-LAST:event_btnPagarActionPerformed
 DefaultTableModel modelo = new DefaultTableModel();
     public void descuentosHombresUCE(){
         double cantidadS, precioS, totalS, descuentoS = 0.04;
