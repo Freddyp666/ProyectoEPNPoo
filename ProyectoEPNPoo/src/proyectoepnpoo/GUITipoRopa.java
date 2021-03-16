@@ -26,7 +26,18 @@ public class GUITipoRopa extends javax.swing.JFrame {
         cbxNike.setEnabled(false);
     }    
   
+    public void limpiar(){        
+        cbxAdidas.setSelected(false);
+        cbxLevis.setSelected(false);
+        cbxNike.setSelected(false);
+        cmbTipoRopa.setSelectedIndex(-1);        
+    }
     
+    public void limpiarCbx(){
+        cbxAdidas.setSelected(false);
+        cbxLevis.setSelected(false);
+        cbxNike.setSelected(false);
+    }
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -126,7 +137,7 @@ public class GUITipoRopa extends javax.swing.JFrame {
             .addGroup(jPanel2Layout.createSequentialGroup()
                 .addGap(45, 45, 45)
                 .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap(21, Short.MAX_VALUE))
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -151,6 +162,11 @@ public class GUITipoRopa extends javax.swing.JFrame {
 
         btnSalir.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         btnSalir.setText("Salir");
+        btnSalir.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnSalirActionPerformed(evt);
+            }
+        });
 
         btnRegresar.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         btnRegresar.setText("Regresar");
@@ -187,7 +203,7 @@ public class GUITipoRopa extends javax.swing.JFrame {
                         .addComponent(btnSalir, javax.swing.GroupLayout.PREFERRED_SIZE, 75, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(41, 41, 41)
+                        .addGap(30, 30, 30)
                         .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
@@ -226,6 +242,7 @@ public class GUITipoRopa extends javax.swing.JFrame {
 
     private void btnContinuarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnContinuarActionPerformed
         // TODO add your handling code here:
+        limpiar();
     }//GEN-LAST:event_btnContinuarActionPerformed
 
     private void cmbTipoRopaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cmbTipoRopaActionPerformed
@@ -258,11 +275,17 @@ public class GUITipoRopa extends javax.swing.JFrame {
                 break;
             }
         }
+        limpiarCbx();
     }//GEN-LAST:event_cmbTipoRopaActionPerformed
 
     private void btnGuardarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnGuardarActionPerformed
        
     }//GEN-LAST:event_btnGuardarActionPerformed
+
+    private void btnSalirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSalirActionPerformed
+        // TODO add your handling code here:
+        System.exit(0);
+    }//GEN-LAST:event_btnSalirActionPerformed
 
     /**
      * @param args the command line arguments
